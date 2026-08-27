@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    adsbygoogle?: Array<Record<string, unknown>>;
+  }
+}
 
 interface AdSlotProps {
   slotId?: string;
   format?: 'banner' | 'rectangle';
 }
 
-export const AdSlot: React.FC<AdSlotProps> = ({ format = 'banner' }) => {
+export const AdSlot: React.FC<AdSlotProps> = ({ slotId, format = 'banner' }) => {
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch {
+      // Ignorujemy błędy ad-blockerów
+    }
+  }, []);
+
   return (
-    <div className={`w-full rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 flex flex-col items-center justify-center text-center p-4 transition-colors ${
-      format === 'banner' ? 'min-h-[90px]' : 'min-h-[250px]'
+    <div className={`w-full overflow-hidden flex flex-col items-center justify-center text-center transition-all ${
+      format === 'banner' ? 'min-h-[90px] my-2' : 'min-h-[250px] my-4'
     }`}>
-      <span className="text-[10px] uppercase font-semibold text-slate-400 dark:text-slate-500 tracking-wider">
-        Miejsce na reklamę (Google AdSense)
-      </span>
-      <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
-        Slot reklamowy zoptymalizowany pod kątem szybkości ładowania
-      </p>
+      {/* Prawdziwy slot Google AdSense */}
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block', textAlign: 'center', width: '100%' }}
+        data-ad-client="ca-pub-7604952711837468"
+        data-ad-slot={slotId || ''}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </div>
   );
 };
