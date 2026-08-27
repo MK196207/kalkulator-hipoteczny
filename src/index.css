@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}
+
+/* Ukrycie brzydkich domyślnych strzałek w polach numerycznych (Chrome, Safari, Edge, Firefox) */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Wyraziste, kontrastowe kropki suwaków w trybie jasnym i ciemnym */
+input[type="range"] {
+  @apply appearance-none bg-transparent cursor-pointer;
+}
+
+/* Webkit (Chrome, Edge, Safari) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #4f46e5; /* indigo-600 */
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(79, 70, 229, 0.4);
+  cursor: grab;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #4338ca;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.45);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+/* Wariant zielony (np. dla wkładu własnego i nadpłat) */
+input[type="range"].accent-emerald-600::-webkit-slider-thumb {
+  background: #059669; /* emerald-600 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(5, 150, 105, 0.4);
+}
+
+input[type="range"].accent-emerald-600::-webkit-slider-thumb:hover {
+  background: #047857;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.45);
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4f46e5;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Tryb Ciemny - wyraziste obramowanie i nasycony kolor */
+.dark input[type="range"]::-webkit-slider-thumb {
+  background: #6366f1; /* indigo-500 */
+  border: 3px solid #0f172a; /* slate-900 */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.6), 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.dark input[type="range"].accent-emerald-600::-webkit-slider-thumb {
+  background: #10b981; /* emerald-500 */
+  border: 3px solid #0f172a;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.6), 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.dark input[type="range"]::-moz-range-thumb {
+  background: #6366f1;
+  border: 3px solid #0f172a;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.6);
+}
