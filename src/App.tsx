@@ -12,6 +12,7 @@ import { InterestRateSimulation } from './components/InterestRateSimulation';
 import { AmortizationChart } from './components/AmortizationChart';
 import { AdvisorAlerts } from './components/AdvisorAlerts';
 import { AdSlot } from './components/AdSlot';
+import { FaqSection } from './components/FaqSection';
 import { CookieBanner } from './components/CookieBanner';
 import { PrivacyModal } from './components/PrivacyModal';
 import { Footer } from './components/Footer';
@@ -50,7 +51,7 @@ export function App() {
     }
   }, [darkMode]);
 
-  // Główny stan parametrów kredytu
+  // Główny stan parametrów kredytu (logika w 100% zachowana)
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
 
   // Natychmiastowe przeliczanie matematyki w pamięci podręcznej (bez opóźnień)
@@ -132,6 +133,9 @@ export function App() {
           </div>
 
         </div>
+
+        {/* Sekcja SEO FAQ (Pytania i Odpowiedzi) */}
+        <FaqSection />
 
       </main>
 
