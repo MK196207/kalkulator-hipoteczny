@@ -13,6 +13,7 @@ import { AmortizationChart } from './components/AmortizationChart';
 import { AdvisorAlerts } from './components/AdvisorAlerts';
 import { AdSlot } from './components/AdSlot';
 import { FaqSection } from './components/FaqSection';
+import { SeoGuideSection } from './components/SeoGuideSection';
 import { CookieBanner } from './components/CookieBanner';
 import { PrivacyModal } from './components/PrivacyModal';
 import { Footer } from './components/Footer';
@@ -133,6 +134,9 @@ export function App() {
           </div>
 
         </div>
+
+        {/* Sekcja Poradnika Kredytobiorcy (SEO E-E-A-T) */}
+        <SeoGuideSection />
 
         {/* Sekcja SEO FAQ (Pytania i Odpowiedzi) */}
         <FaqSection />

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://hipodoradca.pl
+
+# Sitemaps
+Sitemap: https://hipodoradca.pl/sitemap.xml
